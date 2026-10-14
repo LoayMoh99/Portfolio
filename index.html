@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loay Mahmoud · Software Engineer</title>
+<meta name="description" content="Loay Mahmoud is a product-minded software engineer and CS Ph.D. student at Indiana University Indianapolis. He turns what clients and users say into software they use.">
+<meta property="og:title" content="Loay Mahmoud · Software Engineer">
+<meta property="og:description" content="Product-minded software engineer with 5 years of experience and a CS Ph.D. student at Indiana University Indianapolis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1EC;
+  --surface:#FFFFFF;
+  --ink:#18212E;
+  --muted:#556170;
+  --line:#CBD3CC;
+  --teal:#0D6B68;
+  --marigold:#E2A12B;
+  --heard:#E3E9E4;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Source Serif 4", Georgia, serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111A20; --surface:#18232B; --ink:#E7ECE8; --muted:#9AA8B2;
+    --line:#2C3A44; --teal:#4FB8B1; --marigold:#F0B84A; --heard:#1F2C34;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111A20; --surface:#18232B; --ink:#E7ECE8; --muted:#9AA8B2;
+  --line:#2C3A44; --teal:#4FB8B1; --marigold:#F0B84A; --heard:#1F2C34;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.125rem/1.65 var(--body)}
+a{color:var(--teal);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.measure{max-width:40rem}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.top .mark{font:800 1.05rem/1 var(--display);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;gap:20px;flex-wrap:wrap;font:600 .95rem/1 var(--display)}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:56px 0 88px}
+.hero h1{font:800 clamp(2.6rem,6.2vw,4.6rem)/.98 var(--display);letter-spacing:-.035em;margin:0 0 24px}
+.hero .lede{font-size:1.25rem;line-height:1.55;color:var(--ink);margin:0 0 28px;max-width:32rem}
+.hero .status{display:inline-flex;align-items:center;gap:10px;font:600 .95rem/1.3 var(--display);color:var(--muted);margin:0 0 28px}
+.hero .status::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--marigold);box-shadow:0 0 0 4px color-mix(in srgb,var(--marigold) 25%,transparent)}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:600 1rem/1 var(--display);padding:14px 20px;border-radius:999px;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+
+/* the loop: heard -> shipped */
+.loop{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 26px 20px;position:relative}
+.loop h2{font:600 .95rem/1.3 var(--display);color:var(--muted);margin:0 0 18px}
+.msg{border-radius:16px;padding:16px 18px;margin:0;font-size:1.05rem;line-height:1.5}
+.msg .who{display:block;font:600 .85rem/1.2 var(--display);margin-bottom:6px}
+.heard{background:var(--heard);border-bottom-left-radius:4px;margin-right:36px}
+.heard .who{color:var(--muted)}
+.shipped{background:color-mix(in srgb,var(--teal) 12%,var(--surface));border:1.5px solid var(--teal);border-bottom-right-radius:4px;margin-left:36px;margin-top:14px}
+.shipped .who{color:var(--teal)}
+.arrow{display:block;width:2px;height:22px;background:var(--line);margin:10px auto 0;position:relative}
+.loop footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:12px}
+.loop .where{font:600 .9rem/1.3 var(--display);color:var(--muted)}
+.dots{display:flex;gap:6px}
+.dots button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:transparent;cursor:pointer;padding:0;display:grid;place-items:center}
+.dots button span{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots button[aria-pressed="true"]{border-color:var(--teal)}
+.dots button[aria-pressed="true"] span{background:var(--teal)}
+.swap{transition:opacity .25s ease}
+.swap.out{opacity:0}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+section > .wrap > h2{font:800 clamp(1.9rem,3.6vw,2.6rem)/1.05 var(--display);letter-spacing:-.025em;margin:0 0 14px}
+.intro{color:var(--muted);margin:0 0 40px}
+
+/* work timeline */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7rem;top:6px;bottom:6px;width:2px;background:var(--line)}
+.job{display:grid;grid-template-columns:7rem 1fr;gap:0 36px;padding:0 0 40px;position:relative}
+.job:last-child{padding-bottom:0}
+.job .when{font:600 .95rem/1.4 var(--display);color:var(--muted);padding-top:3px;text-align:right;padding-right:18px}
+.job::after{content:"";position:absolute;left:calc(7rem - 6px);top:8px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--teal)}
+.job.now::after{background:var(--marigold);border-color:var(--marigold)}
+.job h3{font:600 1.35rem/1.25 var(--display);margin:0;letter-spacing:-.01em}
+.job .org{font:400 1rem/1.4 var(--display);color:var(--muted);margin:4px 0 10px}
+.job p{margin:0 0 8px;max-width:42rem}
+.job ul{margin:0;padding-left:1.1rem;max-width:42rem}
+.job li{margin:0 0 4px}
+.job .stack{font:400 .92rem/1.5 var(--display);color:var(--muted);margin-top:10px}
+
+/* next */
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.next h3{font:600 1.25rem/1.25 var(--display);margin:0 0 8px}
+.next p{margin:0;color:var(--ink)}
+.next div{border-top:3px solid var(--teal);padding-top:18px}
+.next div:nth-child(2){border-color:var(--marigold)}
+.next div:nth-child(3){border-color:var(--ink)}
+
+/* toolbox */
+.tools{display:grid;grid-template-columns:12rem 1fr;gap:14px 32px;margin:0}
+.tools dt{font:600 1rem/1.5 var(--display)}
+.tools dd{margin:0;color:var(--muted)}
+
+/* extras */
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.extras h3{font:600 1.25rem/1.25 var(--display);margin:0 0 10px}
+.extras ul{margin:0;padding-left:1.1rem}
+.extras li{margin-bottom:6px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-top:none}
+.contact h2{color:var(--paper)}
+.contact p{color:color-mix(in srgb,var(--paper) 78%,var(--ink));max-width:36rem}
+.contact a{color:var(--paper)}
+.contact .btn{border-color:var(--paper);color:var(--paper)}
+.contact .btn.primary{background:var(--marigold);border-color:var(--marigold);color:#18212E}
+.contact .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font:600 1rem/1 var(--display)}
+footer.site{padding:28px 0;font:400 .9rem/1.4 var(--display);color:var(--muted)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:32px 0 64px}
+  .next,.extras{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr;gap:2px}
+  .tools dd{margin-bottom:12px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .top nav{gap:14px;font-size:.9rem}
+  .timeline::before{left:7px}
+  .job{grid-template-columns:1fr;padding-left:32px}
+  .job::after{left:1px}
+  .job .when{text-align:left;padding:0 0 4px}
+  .heard{margin-right:12px}.shipped{margin-left:12px}
+  section{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">Loay Mahmoud</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#next">What's next</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>I build what clients actually asked for.</h1>
+      <p class="lede">I'm a software engineer with 5 years of experience at startups in the US, Germany, and Egypt, and a product engineer at heart. I sit in the client meetings, listen to the people using the product, and ship the fix. Now also a CS Ph.D. student at Indiana University Indianapolis.</p>
+      <p class="status">Open to roles and projects that fit</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:loaymohamed1999@gmail.com">Email me</a>
+        <a class="btn" href="Loay-Mahmoud-Resume.pdf">Download résumé</a>
+      </div>
+    </div>
+
+    <figure class="loop" aria-labelledby="loop-title">
+      <h2 id="loop-title">From what I heard to what I shipped</h2>
+      <div class="swap" id="swap" aria-live="polite">
+        <p class="msg heard"><span class="who" id="heard-who">Contact-center agents, global pharma client</span><span id="heard">The image scripts we read from on calls are confusing. Sometimes they point us the wrong way.</span></p>
+        <span class="arrow" aria-hidden="true"></span>
+        <p class="msg shipped"><span class="who">Shipped</span><span id="shipped">Replaced static images with dynamic scripts that guide agents step by step through each call.</span></p>
+      </div>
+      <footer>
+        <span class="where" id="where">VCloud · VOCCS platform</span>
+        <div class="dots" role="group" aria-label="Choose an example">
+          <button type="button" aria-pressed="true" aria-label="Example 1: VCloud"><span></span></button>
+          <button type="button" aria-pressed="false" aria-label="Example 2: MNT-Halan"><span></span></button>
+          <button type="button" aria-pressed="false" aria-label="Example 3: Keepoala"><span></span></button>
+          <button type="button" aria-pressed="false" aria-label="Example 4: CyberWater"><span></span></button>
+        </div>
+      </footer>
+    </figure>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Where I've worked</h2>
+    <p class="intro measure">Most of my work has been at small teams where engineers talk to customers directly. Newest first.</p>
+    <ol class="timeline">
+      <li class="job now">
+        <div class="when">2026 – now</div>
+        <div>
+          <h3>Research Assistant</h3>
+          <div class="org">Indiana University Indianapolis, CyberWater project</div>
+          <p>I work with the researchers and Ph.D. students at IU and Pitt who use <a href="https://cyber-water.luddy.indianapolis.iu.edu/">CyberWater</a>, a scientific workflow app. I'm modernizing its server, APIs, and auto-update system and turning their feedback into fixes.</p>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2025 – 2026</div>
+        <div>
+          <h3>Senior Software Engineer</h3>
+          <div class="org">MNT-Halan, Giza, Egypt</div>
+          <ul>
+            <li>Built FinTech ERP modules for accounting, payments, and reporting.</li>
+            <li>Took requirements from the accounting team and Odoo implementation partners.</li>
+            <li>Led an Odoo migration that made core financial workflows 5x faster, and prototyped MCP servers for internal LLM tools.</li>
+          </ul>
+          <div class="stack">Python, Odoo, Elixir/Phoenix, JavaScript</div>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2024 – 2025</div>
+        <div>
+          <h3>Software Engineer II</h3>
+          <div class="org">VCloud LLC, Nevada, USA (remote)</div>
+          <ul>
+            <li>Product engineer on VOCCS, an omnichannel contact center used by hundreds of agents.</li>
+            <li>Ran weekly client meetings, demoed new features, and showed the product to prospective clients' sales and technical teams.</li>
+            <li>Built call routing on Twilio and AWS Connect, refactored the backends into modular services, and set up CI/CD.</li>
+          </ul>
+          <div class="stack">Node.js, Python, Laravel, React, Twilio, AWS Connect, GCP</div>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2022 – 2024</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="org">Keepoala, Munich, Germany (remote)</div>
+          <ul>
+            <li>Worked directly with the CTO and CFO on a returns dashboard and loyalty app for online shoppers.</li>
+            <li>Helped nearly triple the user base, shipping features across backend and frontend.</li>
+            <li>Built Shopify and Billbee integrations, moved the database from Firestore to PostgreSQL, and moved deployments to AWS.</li>
+            <li>Added a backend testing framework with Mocha and Sinon, and Redis caching for the shop plugins.</li>
+          </ul>
+          <div class="stack">TypeScript, Node.js, React/Next.js, PostgreSQL, AWS ECS</div>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2022 – 2025</div>
+        <div>
+          <h3>Teaching Assistant</h3>
+          <div class="org">Cairo University, Giza, Egypt</div>
+          <ul>
+            <li>Taught tutorials and labs for three years across Software Engineering, OOP, Compilers, Advanced Databases, Computer Modeling, and Algorithms.</li>
+            <li>Created new labs, exercises, and quizzes, and mentored student teams through semester-long software projects.</li>
+            <li>It's where I learned to explain technical work to anyone, which I now use in every client meeting and demo.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2024</div>
+        <div>
+          <h3>Short engagements</h3>
+          <div class="org">Turing (USA) and Pleny (Dubai), remote</div>
+          <p>Trained LLMs and AI agents on code-interpreter tasks for a MAANG company at Turing. Fixed data bugs and validation jobs to unblock Pleny's app launch.</p>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">2020 – 2022</div>
+        <div>
+          <h3>Where I started</h3>
+          <div class="org">Internships and freelance work in Egypt</div>
+          <ul>
+            <li>Built the Accounts Management feature of the My Vodafone app with the Android core team at _VOIS.</li>
+            <li>Built a Flutter and Firebase field app, on my own, for the Ministry of Water Resources' site engineers.</li>
+            <li>Moved Master Micro's CI pipeline to Jenkins, and built backend and mobile features for NajahNow.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="next">
+  <div class="wrap">
+    <h2>What I want to do next</h2>
+    <p class="intro measure">I don't want my Ph.D. to pull me away from real products. I'd like each to make the other better.</p>
+    <div class="next">
+      <div>
+        <h3>Product-minded engineering</h3>
+        <p>Roles where I own features end to end and talk to the people using them. Founder-led teams are where I do my best work.</p>
+      </div>
+      <div>
+        <h3>Applied research</h3>
+        <p>A Ph.D. grounded in industry problems, likely in cloud, networking, or software products. Research that ends up running somewhere.</p>
+      </div>
+      <div>
+        <h3>Software with AI inside</h3>
+        <p>Products that put LLMs to practical use, from training data at Turing to MCP servers at Halan, built with the same care as any other feature.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolbox">
+  <div class="wrap">
+    <h2>What I work with</h2>
+    <dl class="tools">
+      <dt>Working with people</dt><dd>Client meetings and demos, requirements, feature scoping, teaching and presenting</dd>
+      <dt>Languages</dt><dd>TypeScript, JavaScript, Python, Elixir, PHP, Dart, C++, Java</dd>
+      <dt>Frameworks</dt><dd>React, Next.js, Node.js, Nest.js, Phoenix, Odoo, Laravel, FastAPI, Flutter</dd>
+      <dt>Data</dt><dd>PostgreSQL, MySQL, MongoDB, Firestore, Redis</dd>
+      <dt>Cloud</dt><dd>AWS Certified Developer – Associate. ECS, S3, RDS, API Gateway, Connect, GCP, Docker, GitHub Actions</dd>
+      <dt>Integrations</dt><dd>Twilio, Shopify, Billbee, Sendinblue, MCP</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="extras">
+  <div class="wrap extras">
+    <div>
+      <h3>Education</h3>
+      <ul>
+        <li>Ph.D. in Computer Science, Indiana University Indianapolis, 2026 – present. Indiana University Fellowship.</li>
+        <li>B.Sc. Computer and Communication Engineering, Cairo University, 2022. Graduated with honors, ranked 15th in class.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Recognition</h3>
+      <ul>
+        <li>5th place, Dell Envision Future Competition, for My Social Eye, software that turns facial emotions into audio cues for blind users.</li>
+        <li>1st in Egypt and top 25 at the FIRST LEGO League World Festival, USA.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Have something people need built?</h2>
+    <p>I'm based in Indianapolis and open to roles and projects that fit, remote or in person. The quickest way to reach me is email.</p>
+    <div class="actions" style="margin-top:24px">
+      <a class="btn primary" href="mailto:loaymohamed1999@gmail.com">loaymohamed1999@gmail.com</a>
+      <a class="btn" href="Loay-Mahmoud-Resume.pdf">Download résumé</a>
+    </div>
+    <div class="links">
+      <a href="https://linkedin.com/in/loay-mohamed-574464182/">LinkedIn</a>
+      <a href="https://github.com/LoayMoh99">GitHub</a>
+      <a href="https://github.com/LoayMoh99IU">GitHub (IU)</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><footer class="site">© 2026 Loay Mahmoud</footer></div>
+
+<script>
+const examples = [
+  {who:"Contact-center agents, global pharma client",
+   heard:"The image scripts we read from on calls are confusing. Sometimes they point us the wrong way.",
+   shipped:"Replaced static images with dynamic scripts that guide agents step by step through each call.",
+   where:"VCloud · VOCCS platform"},
+  {who:"Accounting team",
+   heard:"Our core financial workflows in the ERP are too slow to keep up with daily operations.",
+   shipped:"Led a full Odoo migration that made those workflows 5x faster.",
+   where:"MNT-Halan · FinTech ERP"},
+  {who:"CTO and CFO",
+   heard:"We need shoppers' returns and loyalty data to flow in from the shops they already buy from.",
+   shipped:"Built Shopify and Billbee integrations while the user base nearly tripled.",
+   where:"Keepoala · returns and loyalty app"},
+  {who:"Researchers and Ph.D. students",
+   heard:"Getting the latest version of the app onto our machines shouldn't be this much work.",
+   shipped:"Modernizing the server, APIs, and auto-update system so new releases reach users reliably.",
+   where:"IU Indianapolis · CyberWater"}
+];
+const btns=[...document.querySelectorAll('.dots button')];
+const swap=document.getElementById('swap');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function show(i){
+  btns.forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+  const e=examples[i];
+  const apply=()=>{
+    document.getElementById('heard-who').textContent=e.who;
+    document.getElementById('heard').textContent=e.heard;
+    document.getElementById('shipped').textContent=e.shipped;
+    document.getElementById('where').textContent=e.where;
+    swap.classList.remove('out');
+  };
+  if(reduce){apply();return;}
+  swap.classList.add('out'); setTimeout(apply,220);
+}
+btns.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
+</script>
+</body>
+</html>
